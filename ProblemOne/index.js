@@ -86,7 +86,10 @@ function mutateArray(a) {
     }
   }
 
-  return a;
+  return a
+    .filter(function(obj) {
+      return obj['guest_type'] === 'guest';
+    })
 }
 
 /**
