@@ -1,8 +1,8 @@
 const {mutateArray} = require('../index');
 const _ = require('lodash');
 
-describe('Step 1 Tests', function() {
-    test('Flatten array in given format', function() {
+describe('Step 2 Tests', function() {
+    test('Flatten array in given format then reduce some_array', function() {
         const data = [
             {
                 'guest_type': 'crew',
@@ -29,24 +29,26 @@ describe('Step 1 Tests', function() {
                 'first_name': 'Marco',
                 'last_name': 'Burns',
                 'room_no': 'A0073',
-                'some_array': [7, 2, 4]            
+                'some_total': 13
             },
             {
                 'guest_type': 'guest',
                 'first_name': 'John',
                 'last_name': 'Doe',
                 'room_no': 'C73',
-                'some_array': [1,3,5,2,4,3]
+                'some_total': 18
             },        
         ];
     
         const result = mutateArray(data)
+
+        console.log(result)
     
         expect(_.isEqual(target, result))
             .toBe(true);    
     });
     
-    test('Flatten array with more nested objects', () => {
+    test('Flatten array with more nested objects then reduce some_array', () => {
         const data = [
             {
                 'guest_type': 'crew',
@@ -81,7 +83,7 @@ describe('Step 1 Tests', function() {
                 'first_name': 'Marco',
                 'last_name': 'Burns',
                 'room_no': 'A0073',
-                'some_array': [7,2,4], 
+                'some_total': 13, 
                 'card_type': 'Visa',
                 'zipcode': '92108'
             },
@@ -90,13 +92,15 @@ describe('Step 1 Tests', function() {
                 'first_name': 'John',
                 'last_name': 'Doe',
                 'room_no': 'C73',
-                'some_array': [1,3,5,2,4,3],
+                'some_total': 18,
                 'card_type': 'Mastercard',
                 'zipcode': '77006'            
             },        
         ];
     
         const result = mutateArray(data);
+        console.log(result)
+
         expect(_.isEqual(target, result))
             .toBe(true);
     });
