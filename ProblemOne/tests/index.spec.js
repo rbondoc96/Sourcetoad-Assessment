@@ -1,8 +1,8 @@
 const {mutateArray} = require('../index');
 const _ = require('lodash');
 
-describe('Step 3 Tests', function() {
-    test('Flatten array in given format, reduce some_array, see only guests', function() {
+describe('Final Results Tests', function() {
+    test('Final results with given data', function() {
         const data = [
             {
                 'guest_type': 'crew',
@@ -62,17 +62,17 @@ describe('Step 3 Tests', function() {
         const target = [
             {
                 'guest_type': 'guest',
-                'first_name': 'John',
-                'last_name': 'Doe',
-                'room_no': 'C73',
-                'some_total': 18
-            },
-            {
-                'guest_type': 'guest',
                 'first_name': 'Jane',
                 'last_name': 'Doe',
                 'room_no': 'C73',
                 'some_total': 18,
+            },            
+            {
+                'guest_type': 'guest',
+                'first_name': 'John',
+                'last_name': 'Doe',
+                'room_no': 'C73',
+                'some_total': 18
             },
             {
                 'guest_type': 'guest',
@@ -95,7 +95,7 @@ describe('Step 3 Tests', function() {
             .toBe(true);    
     });
     
-    test('Flatten array with more nested objects, reduce some_array, see only guests', function() {
+    test('Final results with nested objects added', function() {
         const data = [
             {
                 'guest_type': 'crew',
@@ -103,11 +103,7 @@ describe('Step 3 Tests', function() {
                 'last_name': 'Burns',
                 'guest_booking': {
                     'room_no': 'A0073',
-                    'some_array': [7,2,4],
-                    'payment': {
-                        'card_type': 'Visa',
-                        'zipcode': '92108'
-                    }
+                    'some_array': [7,2,4]
                 },
             },
             {
@@ -155,11 +151,7 @@ describe('Step 3 Tests', function() {
                 'last_name': 'Daniels',
                 'guest_booking': {
                     'room_no': 'B15',
-                    'some_array': [2,5,6,3],
-                    'payment': {
-                        'card_type': 'Visa',
-                        'zipcode': '92115'
-                    }
+                    'some_array': [2,5,6,3]
                 },
             },
             {
@@ -179,21 +171,21 @@ describe('Step 3 Tests', function() {
         const target = [
             {
                 'guest_type': 'guest',
-                'first_name': 'John',
-                'last_name': 'Doe',
-                'room_no': 'C73',
-                'some_total': 18,
-                'card_type': 'Mastercard',
-                'zipcode': '77006'            
-            },
-            {
-                'guest_type': 'guest',
                 'first_name': 'Jane',
                 'last_name': 'Doe',
                 'room_no': 'C73',
                 'some_total': 18,
                 'card_type': 'Mastercard',
                 'zipcode': '77006'
+            },            
+            {
+                'guest_type': 'guest',
+                'first_name': 'John',
+                'last_name': 'Doe',
+                'room_no': 'C73',
+                'some_total': 18,
+                'card_type': 'Mastercard',
+                'zipcode': '77006'            
             },
             {
                 'guest_type': 'guest',

@@ -90,13 +90,17 @@ function mutateArray(a) {
     .filter(function(obj) {
       return obj['guest_type'] === 'guest';
     })
+    .sort(function(A, B) {
+      let result = A['last_name'].localeCompare(B['last_name']);
+      return result !== 0 ? result : A['first_name'].localeCompare(B['first_name']);
+    });
 }
 
 /**
  * Exports the function if testing it in Node
  * Performs browser actions otherwise
  */
-const isNodeEnv = typeof process === 'object' && typeof window === 'undefined'
+const isNodeEnv = typeof process === 'object' && typeof window === 'undefined';
 if(isNodeEnv) {
   module.exports = {mutateArray};
 } else {
