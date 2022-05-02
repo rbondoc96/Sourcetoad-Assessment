@@ -6,9 +6,13 @@
   "dependencies": {
     "jquery": "^3.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^28.0.3",
+    "jest-cli": "^28.0.3",
+    "lodash": "^4.17.21"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/jest/bin/jest"
   },
   "author": "",
   "license": "ISC"

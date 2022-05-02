@@ -55,11 +55,42 @@ var arr = [
   },
 ];
 
-function mutateArray(a) {
-    return a;
+function flattenObject(obj) {
+  const flatObj = {};
+
+  Object.keys(obj).forEach(function(key) {
+      const value = obj[key];
+
+      if(value && typeof value === 'object' && !Array.isArray(value)) {
+        Object.assign(flatObj, flattenObject(value));
+      } else {
+        flatObj[key] = value;
+      }
+  });
+
+  return flatObj;
 }
 
-$(document).ready(function() {
+function mutateArray(a) {
+  for(let i = 0; i < a.length; i++) {
+    if(typeof a[i] === 'object') {
+      a[i] = flattenObject(a[i]);
+    }
+  }
+
+  return a;
+}
+
+/**
+ * Exports the function if testing it in Node
+ * Performs browser actions otherwise
+ */
+const isNodeEnv = typeof process === 'object' && typeof window === 'undefined'
+if(isNodeEnv) {
+  module.exports = {mutateArray};
+} else {
+  $(document).ready(function() {
     $('#originalArray').html(JSON.stringify(arr, null, 2));
     $('#resultsArray').html(JSON.stringify(mutateArray(arr), null, 2));
-});
+  });
+}
