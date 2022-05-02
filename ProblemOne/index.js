@@ -77,7 +77,7 @@ function mutateArray(a) {
       a[i] = flattenObject(a[i]);
     }
 
-    const someArray = a[i]['some_array']
+    const someArray = a[i]['some_array'];
     if(someArray && Array.isArray(someArray)) {
       a[i]['some_total'] = someArray.reduce(function(prev, curr) {
         return prev + curr;

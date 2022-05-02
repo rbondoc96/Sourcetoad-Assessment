@@ -90,7 +90,7 @@ describe('Final Results Tests', function() {
             },                     
         ];
     
-        const result = mutateArray(data)    
+        const result = mutateArray(data);    
         expect(_.isEqual(target, result))
             .toBe(true);    
     });
