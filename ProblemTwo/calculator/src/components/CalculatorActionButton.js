@@ -22,20 +22,22 @@ function CalculatorActionButton({ action }) {
     };
 
     const negateOperand = () => {
-        setHistory(prevState => {
-            var operand;
-
-            if(prevState.currentOperand[0] !== "-") {
-                operand = "-" + prevState.currentOperand;
-            } else {
-                operand = prevState.currentOperand.substring(1, prevState.currentOperand.length);
-            }
-            setScreenText(operand);
-            return {
-                ...prevState,
-                currentOperand: operand,
-            };
-        });
+        if(history.currentOperand) {
+            setHistory(prevState => {
+                var operand;
+    
+                if(prevState.currentOperand[0] !== "-") {
+                    operand = "-" + prevState.currentOperand;
+                } else {
+                    operand = prevState.currentOperand.substring(1, prevState.currentOperand.length);
+                }
+                setScreenText(operand);
+                return {
+                    ...prevState,
+                    currentOperand: operand,
+                };
+            });
+        }
     };
 
     const handlePercents = () => {
@@ -51,7 +53,7 @@ function CalculatorActionButton({ action }) {
                     currentOperand: converted,
                 };
             });
-        } else {
+        } else if(history.currentOperand) {
             setHistory(prevState => {
                 const converted = String(parseFloat(
                     (history.currentOperand / 100).toFixed(12)
@@ -66,7 +68,7 @@ function CalculatorActionButton({ action }) {
     };
 
     const addDecimalPoint = () => {
-        if(!history.currentOperand.includes(".")) {
+        if(history.currentOperand && !history.currentOperand.includes(".")) {
             setHistory(prevState => {
                 const ptOperand = prevState.currentOperand + ".";
 
