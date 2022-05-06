@@ -5,7 +5,6 @@ const CalculatorContext = createContext();
 function CalculatorContextProvider({ children }) {
 
     const INITIAL_HISTORY = {
-        lastOperand: null,
         lastPressedOperand: null,
         lastPressedOperator: null,
         lastPressedArithmeticOperator: null,

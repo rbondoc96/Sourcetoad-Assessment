@@ -80,6 +80,8 @@ function App() {
       case "Period":
         calculator.point.click();
         break;
+      
+      case "Backspace":
       case "KeyC":
         calculator.clear.click();
         break;

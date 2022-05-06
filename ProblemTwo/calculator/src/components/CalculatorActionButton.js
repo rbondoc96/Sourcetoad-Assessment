@@ -8,8 +8,8 @@ function CalculatorActionButton({ action }) {
         HISTORY,
         RESULT,
     } = useContext(CalculatorContext);
-    const [screenText, setScreenText] = SCREEN;
-    const [equation, setEquation] = EQUATION;
+    const setScreenText = SCREEN[1];
+    const setEquation = EQUATION[1];
     const [history, setHistory, INITIAL_HISTORY] = HISTORY;
     const setResult = RESULT[1];
 
@@ -19,9 +19,8 @@ function CalculatorActionButton({ action }) {
         setEquation([]);
         setHistory(INITIAL_HISTORY);
         setResult(null);
-    }
+    };
 
-    // TODO: Fix me
     const negateOperand = () => {
         setHistory(prevState => {
             var operand;
@@ -36,20 +35,11 @@ function CalculatorActionButton({ action }) {
                 ...prevState,
                 currentOperand: operand,
             };
-        })
-
-        // if(screenText[0] !== "-") {
-            
-        //     setScreenText(prevState => "-" + prevState);
-        // } else {
-        //     setScreenText(prevState => prevState.substring(1, prevState.length));
-        // }
-        // setEquation(prevState => [...prevState, "*", "-1"]);
-    }
+        });
+    };
 
     const handlePercents = () => {
-        // For (+) and (-), % acts as a percentage of lastPressedOperand mult. by the
-        // currentOperand in focus
+        // For (+) and (-), % is a percentage of lastPressedOperand mult. by the currentOperand in focus
         if(history.lastPressedOperator === "+" || history.lastPressedOperator === "-") {
             setHistory(prevState => {
                 const converted = String(parseFloat(
@@ -73,7 +63,7 @@ function CalculatorActionButton({ action }) {
                 };
             });
         }
-    }
+    };
 
     const addDecimalPoint = () => {
         if(!history.currentOperand.includes(".")) {
@@ -88,14 +78,14 @@ function CalculatorActionButton({ action }) {
                 };
             });
         }      
-    }
+    };
     
     const handleAnimationEnd = (event) => {
         const target = event.currentTarget;
         if(target.classList.contains("action-button-fade")) {
             target.classList.remove("action-button-fade");
         }
-    }
+    };
 
     const handleClick = (event) => {
         const target = event.currentTarget;

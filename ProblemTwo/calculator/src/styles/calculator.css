@@ -4,6 +4,7 @@
     grid-template-rows: 30% 70%;
 }
 
+/* Calculator Display */
 .calculator-display {
     display: flex;
     justify-content: flex-end;
@@ -25,11 +26,13 @@
     background: transparent;
 }
 
+/* Calculator Button grid */
 .calculator-buttons {
     display: grid;
     grid-auto-rows: 1fr;
 }
 
+/* Calculator Button styles */
 .calculator-button,
 .calculator-operator-button,
 .calculator-action-button {
@@ -73,6 +76,7 @@
 }
 
 
+/* Animations for button presses */
 .number-button-fade {
     animation-name: number-button-fade;
 }

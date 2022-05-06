@@ -4,12 +4,10 @@ import {CalculatorContext} from "../context/CalculatorContext";
 function CalculatorNumberButton({ number }) {
     const {
         SCREEN,
-        EQUATION,
         HISTORY,
         RESULT,
     } = useContext(CalculatorContext);
-    const [screenText, setScreenText] = SCREEN;
-    const setEquation = EQUATION[1];
+    const setScreenText = SCREEN[1];
     const [history, setHistory] = HISTORY;
     const setResult = RESULT[1];
 
@@ -19,7 +17,7 @@ function CalculatorNumberButton({ number }) {
         if(target.classList.contains("number-button-fade")) {
             target.classList.remove("number-button-fade");
         }
-    }
+    };
 
 
     const handleClick = (event) => {
@@ -39,6 +37,7 @@ function CalculatorNumberButton({ number }) {
             }));
             setResult(null);
 
+        // Start a new equation
         } else if(history.lastPressedOperator === "=") {
             setScreenText(number);
             setHistory(prevState => ({
