@@ -46,7 +46,7 @@ function CalculatorNumberButton({ number }) {
                 lastPressedOperand: number,
             }));
             setResult(null);
-        } else {
+        } else if(history.currentOperand) {
             setScreenText(prevState => prevState + number);
             setHistory(prevState => ({
                 ...prevState, 
