@@ -1,0 +1,54 @@
+.status-bar {
+    position: absolute;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+    background-color: transparent;
+    color: #fff;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+.status-bar-left {
+    display: flex;
+    align-items: center;
+    margin-left: 0.7em;
+}
+.status-bar-network {
+    position: relative;
+    transform: translateY(1.5px);
+
+    margin-right: 0.3em;
+}
+.status-bar-right {
+    display: flex;
+    align-items: center;
+
+    margin-right: 0.7em;
+}
+.status-bar-bt {
+    margin-right: 0.4em;
+}
+.status-bar-battery-percent {
+    margin-right: 0.4em;
+}
+.status-bar-bt {
+    display: flex;
+}
+.status-bar-battery {
+    display: flex;
+}
+
+.status-bar-clock-colon {
+    animation-name: toggleVisibility;
+    animation-duration: 1s;
+    animation-timing-function: step-start;
+    animation-iteration-count: infinite;
+}
+
+@keyframes toggleVisibility {
+    50% {
+        opacity: 0;
+    }
+}

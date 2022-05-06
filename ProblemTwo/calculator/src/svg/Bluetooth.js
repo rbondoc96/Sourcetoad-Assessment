@@ -1,0 +1,10 @@
+function Bluetooth() {
+
+    return(
+<svg width="9" height="14" viewBox="0 0 9 14" fill="none">
+    <path d="M9 3.997L4.95673 0H4.24862V5.313L0.998426 2.1L0 3.087L3.9583 7L0 10.913L0.998426 11.9L4.24862 8.687V14H4.95673L9 10.003L5.95515 7L9 3.997ZM5.66483 2.681L6.99607 3.997L5.66483 5.313V2.681ZM6.99607 10.003L5.66483 11.319V8.687L6.99607 10.003V10.003Z" fill="white"/>
+</svg>
+    );
+}
+
+export default Bluetooth;

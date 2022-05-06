@@ -1,0 +1,132 @@
+import {useContext} from "react";
+import {CalculatorContext} from "../context/CalculatorContext";
+
+function CalculatorActionButton({ action }) {
+    const {
+        SCREEN,
+        EQUATION,
+        HISTORY,
+        RESULT,
+    } = useContext(CalculatorContext);
+    const [screenText, setScreenText] = SCREEN;
+    const [equation, setEquation] = EQUATION;
+    const [history, setHistory, INITIAL_HISTORY] = HISTORY;
+    const setResult = RESULT[1];
+
+
+    const resetCalculator = () => {
+        setScreenText("0");
+        setEquation([]);
+        setHistory(INITIAL_HISTORY);
+        setResult(null);
+    }
+
+    // TODO: Fix me
+    const negateOperand = () => {
+        setHistory(prevState => {
+            var operand;
+
+            if(prevState.currentOperand[0] !== "-") {
+                operand = "-" + prevState.currentOperand;
+            } else {
+                operand = prevState.currentOperand.substring(1, prevState.currentOperand.length);
+            }
+            setScreenText(operand);
+            return {
+                ...prevState,
+                currentOperand: operand,
+            };
+        })
+
+        // if(screenText[0] !== "-") {
+            
+        //     setScreenText(prevState => "-" + prevState);
+        // } else {
+        //     setScreenText(prevState => prevState.substring(1, prevState.length));
+        // }
+        // setEquation(prevState => [...prevState, "*", "-1"]);
+    }
+
+    const handlePercents = () => {
+        // For (+) and (-), % acts as a percentage of lastPressedOperand mult. by the
+        // currentOperand in focus
+        if(history.lastPressedOperator === "+" || history.lastPressedOperator === "-") {
+            setHistory(prevState => {
+                const converted = String(parseFloat(
+                    (history.lastPressedOperand * history.currentOperand / 100).toFixed(12)
+                ));    
+                setScreenText(converted);
+                return {
+                    ...prevState,
+                    currentOperand: converted,
+                };
+            });
+        } else {
+            setHistory(prevState => {
+                const converted = String(parseFloat(
+                    (history.currentOperand / 100).toFixed(12)
+                ));    
+                setScreenText(converted);
+                return {
+                    ...prevState,
+                    currentOperand: converted,
+                };
+            });
+        }
+    }
+
+    const addDecimalPoint = () => {
+        if(!history.currentOperand.includes(".")) {
+            setHistory(prevState => {
+                const ptOperand = prevState.currentOperand + ".";
+
+                setScreenText(ptOperand);
+
+                return {
+                    ...prevState,
+                    currentOperand: ptOperand,
+                };
+            });
+        }      
+    }
+    
+    const handleAnimationEnd = (event) => {
+        const target = event.currentTarget;
+        if(target.classList.contains("action-button-fade")) {
+            target.classList.remove("action-button-fade");
+        }
+    }
+
+    const handleClick = (event) => {
+        const target = event.currentTarget;
+        if(!target.classList.contains("action-button-fade")) {
+            target.classList.add("action-button-fade");
+        }
+
+        switch(action) {
+            case "AC":
+            case "C":
+                resetCalculator();
+                break;
+            case "+/-":
+                negateOperand();
+                break;
+            case "%":
+                handlePercents();
+                break;
+            case ".":
+                addDecimalPoint();
+                break;
+            default:
+                break;
+        }
+    };
+
+    return(
+        <button className="calculator-action-button" onClick={handleClick} onAnimationEnd={handleAnimationEnd}>
+            {action}
+        </button>
+    );    
+}
+
+export default CalculatorActionButton;

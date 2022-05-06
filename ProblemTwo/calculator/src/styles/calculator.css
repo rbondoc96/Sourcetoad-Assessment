@@ -1,0 +1,128 @@
+.calculator {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 30% 70%;
+}
+
+.calculator-display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    color: #FFF;
+    background-color: #323232;
+}
+.calculator-value {
+    text-align: right;
+    width: 100%;
+
+    color: #fff;
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: 100;
+    font-size: 84px;
+    margin-right: 0.15em;
+    border: 0;
+    background: transparent;
+}
+
+.calculator-buttons {
+    display: grid;
+    grid-auto-rows: 1fr;
+}
+
+.calculator-button,
+.calculator-operator-button,
+.calculator-action-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+
+    height: 100%;
+    width: 25%;
+
+    font-size: 36px;
+    font-weight: 100;
+    font-family: "Helvetica Neue", sans-serif;
+
+    transition: all 250ms ease-in;
+    animation-duration: 250ms;
+    animation-timing-function: ease-in;
+}
+.calculator-button {
+    color: #000;
+    background-color: rgb(229, 229, 230);
+}
+.calculator-operator-button {
+    color: #fff;
+    background-color: rgb(234, 142, 56);
+}
+.calculator-operator-button--focused {
+    color: rgb(234, 142, 56);
+    background-color: #fff;
+}
+.calculator-action-button {
+    color: #000;
+    background-color: rgb(207, 207, 208);
+}
+/* The '0' key */
+.calculator-buttons-row:last-child .calculator-button:first-child {
+    justify-content: flex-start;
+    width: 50%;
+    padding-left: 1.4em;
+}
+
+
+.number-button-fade {
+    animation-name: number-button-fade;
+}
+.operator-button-fade {
+    animation-name: operator-button-fade;
+}
+.action-button-fade {
+    animation-name: action-button-fade;
+}
+@keyframes number-button-fade {
+    0% {
+        color: #000;
+        background-color: rgb(229, 229, 230);
+    }
+    50% {
+        color: rgb(229, 229, 230);        
+        background-color: #000;
+    }
+    100% {
+        color: #000;
+        background-color: rgb(229, 229, 230);
+    }    
+}
+
+@keyframes operator-button-fade {
+    0% {
+        color: #fff;
+        background-color: rgb(234, 142, 56);
+    }
+    50% {
+        color: rgb(234, 142, 56);
+        background-color: #fff;
+    }
+    100% {
+        color: #fff;
+        background-color: rgb(234, 142, 56);        
+    }    
+}
+
+@keyframes action-button-fade {
+    0% {
+        color: #000;
+        background-color: rgb(207, 207, 208);
+    }
+    50% {
+        color: rgb(207, 207, 208);
+        background-color: #000;
+    }
+    100% {
+        color: #000;
+        background-color: rgb(207, 207, 208);        
+    }    
+}
